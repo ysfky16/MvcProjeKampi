@@ -1,9 +1,36 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<h3 class="text-center"> Mvc Proje Kampı Tablo Örneği - Kategori</h3>
+<hr />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Kategori Id</th>
+            <th>Kategori Adı</th>
+            <th>Açıklama</th>
+            <th>Durum</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Spor</td>
+            <td>Açıklama bekleniyor..</td>
+            <td>True</td>
+            <td><button class="btn btn-primary">Güncelle</button></td>
+        </tr>
+    </tbody>
+</table>
 
-<!DOCTYPE html>
+<td><button class="btn btn-info">Yeni Kategori</button></td>
+<td><button class="btn btn-warning">Kategori Listesi</button></td>
+<td><button class="btn btn-danger">Kategori Açıklamaları</button></td>
+
+
+@*<!DOCTYPE html>
 
 <html>
 <head>
@@ -14,4 +41,4 @@
     <div> 
     </div>
 </body>
-</html>
+</html>*@

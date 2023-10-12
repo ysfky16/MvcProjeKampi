@@ -1,34 +1,31 @@
-﻿using DataAccessLayer.Abstract;
+﻿using BussinessLayer.Abstract;
+using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete.Repostories;
 using Entity.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BussinessLayer.Concrete
 {
-    public class CategoryManager 
+    public class CategoryManager : ICategoryService
     {
-        GenericRepostory<Category> repostory = new GenericRepostory<Category>();
+        ICategoryDal _categorydal;
 
-        public List<Category> GetAllCategory()
+        public CategoryManager(ICategoryDal categorydal)
         {
-            return repostory.GetAll();
+            _categorydal = categorydal;
         }
 
-        public void AddCategory(Category p)
+        public List<Category> GetCategories()
         {
-            if (p.CategoryName == "" || p.CategoryName.Length<3 || p.CategoryName.Length >=50)
-            {
-                // hata mesajı
-            }
-            else
-            {
-                repostory.Insert(p);
-            }
+
+            return _categorydal.GetAll();
         }
+
     }   
 }
