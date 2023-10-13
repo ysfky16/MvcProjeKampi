@@ -1,8 +1,10 @@
 ﻿using BussinessLayer.Concrete;
+using BussinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using Entity.Concrete;
+using FluentValidation.Results;
 using System;
-using System.Collections.Generic;
+using System.Collections.Generic; 
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -35,8 +37,24 @@ namespace MvcProjeKampi.Controllers
         [HttpPost]
         public ActionResult AddCategory(Category p)
         {
-            //_categoryManager.AddCategory(p);
-            return RedirectToAction("GetCategoryList");
+            CategoryValidator categoryValidator = new CategoryValidator();
+            ValidationResult results = categoryValidator.Validate(p);
+
+            if (results.IsValid)
+            {
+                _categoryManager.CategoryAdd(p);
+                return RedirectToAction("GetCategoryList");
+            }
+            else
+            {
+                foreach (var result in results.Errors)
+                {
+                    ModelState.AddModelError(result.PropertyName, result.ErrorMessage);
+                }
+
+            }
+
+            return View();
         }
     }
 }
