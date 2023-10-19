@@ -1,0 +1,49 @@
+﻿@model Entity.Concrete.Writer
+@{
+    ViewBag.Title = "EditWriter";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Yazar Düzenleme</h2>
+<hr />
+
+@using (Html.BeginForm("EditWriter", "Writer", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.WriterId)
+        @Html.Label("Yazar Adı", new { @class = "form-label" })
+        @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.WriterName, null, new { @class = "text-danger" })
+        <br />
+        @Html.Label("Yazar Soyadı", new { @class = "form-label" })
+        @Html.TextBoxFor(x => x.WriterSurmame, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.WriterSurmame, null, new { @class = "text-danger" })
+        <br />
+        @Html.Label("Yazar Etiketi", new { @class = "form-label" })
+        @Html.TextBoxFor(x => x.WriterTitle, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.WriterTitle, null, new { @class = "text-danger" })
+        <br />
+        @Html.Label("Yazar Resim Linki", new { @class = "form-label" })
+        @Html.TextBoxFor(x => x.WriterImage, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.WriterImage, null, new { @class = "text-danger" })
+        <br />
+        @Html.Label("Mail", new { @class = "form-label" })
+        @Html.TextBoxFor(x => x.WriterMail, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.WriterMail, null, new { @class = "text-danger" })
+        <br />
+        @Html.Label("Şifre", new { @class = "form-label" })
+        @Html.TextBoxFor(x => x.WriterPassword, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.WriterPassword, null, new { @class = "text-danger" })
+        <br />
+        @Html.Label("Hakkında", new { @class = "form-label" })
+        @Html.TextAreaFor(x => x.About, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.About, null, new { @class = "text-danger" })
+        <br />
+
+        <button class="btn btn-success">Güncelle</button>
+    </div>
+
+
+}
+
+

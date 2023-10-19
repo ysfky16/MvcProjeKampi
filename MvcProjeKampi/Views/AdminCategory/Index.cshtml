@@ -12,8 +12,8 @@
         <tr>
             <th>Sıra</th>
             <th>Kategori</th>
-            <th>Açıklama</th>
-            <th>Durum</th>
+            @*<th>Açıklama</th>*@
+            @*<th>Durum</th>*@
             <th>İşlemler</th>
         </tr>
     </thead>
@@ -22,11 +22,15 @@
         {
             siraNo++;
             <tr>
-                <td>@siraNo</td>
+                <th>@siraNo</th>
                 <td>@item.CategoryName</td>
-                <td>@item.CategoryDescription</td>
-                <td>@item.CategoryStatus</td>
-                <td><button class="btn btn-primary btn-sm">Güncelle</button></td>
+                @*<td>@item.CategoryDescription</td>*@
+                @*<td>@item.CategoryStatus</td>*@
+                <td>
+                    <a href="/AdminCategory/DeleteCategory/@item.CategoryId" class="btn btn-danger btn-sm">Sil</a>
+                    <a href="/AdminCategory/EditCategory/@item.CategoryId" class="btn btn-primary btn-sm">Güncelle</a>
+                    <a href="#" class="btn btn-success btn-sm">Başlıklar</a>
+                </td>
             </tr>
 
         }

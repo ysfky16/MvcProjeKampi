@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>İstatistikler</h2>
+
+
+<div class="row">
+    <div class="card bg-success mb-3 col-md-4 mr-2" style="max-width: 18rem;">
+        <div class="card-header text-center">Toplam Kategori Sayısı</div>
+        <div class="card-body">
+            @*<h5 class="card-title">Primary card title</h5>*@
+            <h1 class="card-text text-center">@ViewBag.KategoriSayisi</h1>
+        </div>
+    </div>
+
+    <div class="card bg-primary mb-3 col-md-4 mr-2" style="max-width: 18rem;">
+        <div class="card-header text-center">Yazılım Kategorisine ait başlıklar</div>
+        <div class="card-body">
+            @*<h5 class="card-title">Primary card title</h5>*@
+            <h1 class="card-text text-center">@ViewBag.YazilimBaslik</h1>
+        </div>
+    </div>
+
+
+    <div class="card bg-danger mb-3 col-md-4 mr-2" style="max-width: 18rem;">
+        <div class="card-header text-center">Yazar adında A harfi bulunanlar</div>
+        <div class="card-body">
+            @*<h5 class="card-title">Primary card title</h5>*@
+            <h1 class="card-text text-center">@ViewBag.YazarAdi</h1>
+        </div>
+    </div>
+
+    <div class="card bg-warning mb-3 col-md-4 mr-2" style="max-width: 18rem;">
+        <div class="card-header text-center">En Fazla Başlığa Sahip Kategori</div>
+        <div class="card-body">
+            @*<h5 class="card-title">Primary card title</h5>*@
+            <h1 class="card-text text-center">sayi</h1>
+        </div>
+    </div>
+
+    <div class="card bg-secondary mb-3 col-md-4 mr-2" style="max-width: 18rem;">
+        <div class="card-header text-center">Durumu true - false olan kategori farkı</div>
+        <div class="card-body">
+            @*<h5 class="card-title">Primary card title</h5>*@
+            <h1 class="card-text text-center">@ViewBag.Fark</h1>
+        </div>
+    </div>
+</div>

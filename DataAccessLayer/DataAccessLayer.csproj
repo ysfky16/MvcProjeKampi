@@ -68,6 +68,14 @@
     <Compile Include="EntityFramework\EfContentDal.cs" />
     <Compile Include="EntityFramework\EfHeadingDal.cs" />
     <Compile Include="EntityFramework\EfWriterDal.cs" />
+    <Compile Include="Migrations\202310190805268_mig_writer_edit.cs" />
+    <Compile Include="Migrations\202310190805268_mig_writer_edit.designer.cs">
+      <DependentUpon>202310190805268_mig_writer_edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310191120118_mig2_writerAddTitle.cs" />
+    <Compile Include="Migrations\202310191120118_mig2_writerAddTitle.designer.cs">
+      <DependentUpon>202310191120118_mig2_writerAddTitle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -80,6 +88,14 @@
       <Project>{0394c5e5-b660-4ba9-9ab1-94bd1588ef99}</Project>
       <Name>EntityLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202310190805268_mig_writer_edit.resx">
+      <DependentUpon>202310190805268_mig_writer_edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310191120118_mig2_writerAddTitle.resx">
+      <DependentUpon>202310191120118_mig2_writerAddTitle.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

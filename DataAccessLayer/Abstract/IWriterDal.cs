@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-    internal interface IWriterDal:IRepostory<Writer>
+    public interface IWriterDal:IRepostory<Writer>
     {
     }
 }
