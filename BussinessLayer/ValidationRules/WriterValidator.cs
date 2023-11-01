@@ -19,6 +19,7 @@ namespace BussinessLayer.ValidationRules
             RuleFor(x => x.WriterSurmame).NotEmpty().WithMessage("Yazar soyadı boş geçilemez");
             RuleFor(x => x.About).NotEmpty().WithMessage("Hakkında kısmı boş geçilemez");  // hakkında kısmı a harfi içerneli yap !!
             RuleFor(x => x.WriterTitle).NotEmpty().WithMessage("Etiket kısmı boş geçilemez");
+            RuleFor(x => x.WriterMail).NotEmpty().WithMessage("Mail Adresi boş geçilemez").EmailAddress().WithMessage("Geçerli bir mail adresi giriniz");
            
 
 

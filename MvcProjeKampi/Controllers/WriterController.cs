@@ -36,7 +36,7 @@ namespace MvcProjeKampi.Controllers
 
             if (validationResults.IsValid)
             {
-                writerManager.AddWriter(writer);
+                //writerManager.AddWriter(writer);
                 return RedirectToAction("Index");
             }
             else

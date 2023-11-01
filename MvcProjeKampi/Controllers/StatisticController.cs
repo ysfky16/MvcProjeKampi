@@ -23,8 +23,10 @@ namespace MvcProjeKampi.Controllers
             Dictionary<int, int> Dsayilar = sayilar
                 .GroupBy(item => item)
                 .ToDictionary(item => item.Key, item => item.Count());
-            var encok = Dsayilar.Values.Max();
-
+            //var deneme2 = Dsayilar.Select(x => x.Key).Where(y => Dsayilar.Values.Max());
+             var deneme = Dsayilar.Values.Max();
+            var encok = 7;
+            ViewBag.EncokBaslikKategori = _categoryManager.GetById(encok).CategoryName;
             ViewBag.Fark = (_categoryManager.GetCategories().Where(x => x.CategoryStatus == true).Count()) - (_categoryManager.GetCategories().Where(x => x.CategoryStatus == false).Count());
             return View();
         }

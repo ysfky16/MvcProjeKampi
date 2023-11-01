@@ -16,6 +16,8 @@ namespace MvcProjeKampi.Controllers
         // GET: AdminCategory
 
         CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
+
+        
         public ActionResult Index()
         {
             var categoryValues = _categoryManager.GetCategories().OrderBy(x=>x.CategoryName).ToList();

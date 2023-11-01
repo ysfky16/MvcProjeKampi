@@ -1,0 +1,234 @@
+﻿@using Entity.Concrete
+@model List<Heading>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    int siraNo = 0;
+
+    string color = "primary";
+
+    string durum1 = "Aktif Yap";
+    string durum2 = "Pasif Yap";
+
+}
+<!DOCTYPE html>
+<html>
+
+<body class="hold-transition sidebar-mini">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+
+        <div class="row mb-2">
+            <div>
+                <a href="/Heading/AddHeading" class="btn btn-info">Başlık Ekle</a>
+            </div>
+        </div>
+
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Başlık İşlemleri</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%">
+                                #
+                            </th>
+                            <th style="width: 20%">
+                                Başlık Adı
+                            </th>
+                            <th style="width: 15%">
+                                Oluşturan Yazar
+                            </th>
+                            <th style="width: 5%">
+                                Durum
+                            </th>
+                            <th style="width: 15%" class="text-center">
+                                Kategori
+                            </th>
+                            <th style="width: 30%">
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var baslik in Model)
+                        {
+
+                            if (baslik.Category.CategoryName == "Spor")
+                            {
+                                color = "success";
+                            }
+                            else if (baslik.Category.CategoryName == "Film")
+                            {
+                                color = "info";
+                            }
+                            else if (baslik.Category.CategoryName == "Yazılım")
+                            {
+                                color = "secondary";
+                            }
+                            else if (baslik.Category.CategoryName == "Kitap")
+                            {
+                                color = "warning";
+                            }
+                            else
+                            {
+                                color = "primary";
+                            }
+
+                            siraNo++;
+                            <tr>
+                                <td>
+                                    @siraNo
+                                </td>
+                                <td>
+                                    <a>
+                                        @baslik.HeadingName
+                                    </a>
+                                    <br />
+                                    <small>
+                                        @(((DateTime)baslik.HeadingDate).ToString("dd MMM yyyy"))
+                                    </small>
+                                </td>
+                                <td>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <img alt="Avatar" class="table-avatar" src="@baslik.Writer.WriterImage">
+                                            <h5> @baslik.Writer.WriterName @baslik.Writer.WriterSurmame</h5>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    @baslik.HeadingStatus
+                                </td>
+                                <td class="project-state">
+                                    <span class="badge badge-@color">@baslik.Category.CategoryName</span>
+                                </td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-primary btn-sm" href="/Content/ContentByHeading/@baslik.HeadingId">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        Yazılar
+                                    </a>
+                                    <a class="btn btn-info btn-sm" href="/Heading/EditHeading/@baslik.HeadingId">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Düzenle
+                                    </a>
+
+
+                                    <a class="btn btn-danger btn-sm" href="/heading/deleteheading/@baslik.HeadingId">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        @if (baslik.HeadingStatus)
+                                        {
+                                            @durum2;
+                                        }
+                                        else
+                                        {
+                                            @durum1;
+                                        }
+
+                                    </a>
+
+
+
+
+
+
+                                </td>
+                            </tr>
+
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </section>
+</body>
+</html>
+
+
+
+@*<h2>Index</h2>
+    <br />
+    <table class="table table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>Başlık</th>
+            <th>Kategori</th>
+        </tr>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.HeadingID</td>
+                <td>@item.HeadingName</td>
+                <td>@item.Category.CategoryName</td>
+            </tr>
+        }
+    </table>
+    <br />
+    <a href="/Heading/AddHeading" class="btn btn-info">Yeni başlık Girişi</a>*@
+
+
+
+
+
+
+
+@*<br />
+    <h2>Başlık Listesi</h2>
+    <hr />
+
+    <table class=" table table-success table-hover">
+        <thead>
+            <tr>
+                <th>Sıra</th>
+                <th>Adı</th>
+                <th>Tarihi</th>
+                <th>Kategorisi</th>
+                <th>Yazarı</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var baslik in Model)
+            {
+                siraNo++;
+                <tr>
+                    <td>@siraNo</td>
+                    <td>@baslik.HeadingName</td>
+                    <td>@baslik.HeadingDate</td>
+                    <td>@baslik.Category.CategoryName</td>
+                    <td>@baslik.Writer.WriterName @baslik.Writer.WriterSurmame</td>
+                    <td>
+                        <a href="#/@baslik.HeadingId" class="btn btn-danger btn-sm">Sil</a>
+                        <a href="#/@baslik.HeadingId" class="btn btn-success btn-sm">Güncelle</a>
+                        <a href="#/@baslik.HeadingId" class="btn btn-secondary btn-sm">Detaylar</a>
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+    <a href="/Heading/AddHeading" class="btn btn-info btn-sm">Başlık Ekle</a>*@

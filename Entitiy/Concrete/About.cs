@@ -19,10 +19,10 @@ namespace Entity.Concrete
         public string AboutDetails2 { get; set; }
 
         [StringLength(100)]
-        public string Aboutİmage1 { get; set; }
+        public string AboutImage1 { get; set; }
 
         [StringLength(100)]
-        public string Aboutİmage2 { get; set; }
+        public string AboutImage2 { get; set; }
 
     }
 }
