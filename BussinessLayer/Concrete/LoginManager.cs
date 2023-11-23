@@ -1,6 +1,7 @@
 ﻿using BussinessLayer.Abstract;
 using DataAccessLayer.Abstract;
 using Entitiy.Concrete;
+using Entity.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,19 +29,15 @@ namespace BussinessLayer.Concrete
             _loginDal.Delete(admin);
         }
 
-        public void CategoryUpdate(Admin admin)
+        public void AdminUpdate(Admin admin)
         {
-            ;_loginDal.Update(admin);
-        }
-
-        public List<Admin> GetAdmin()
-        {
-            return _loginDal.GetAll();  
+            _loginDal.Update(admin);
         }
 
         public Admin GetById(int id)
         {
             return _loginDal.Get(x => x.AdminId == id);
         }
+
     }
 }

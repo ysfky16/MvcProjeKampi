@@ -27,7 +27,6 @@ namespace BussinessLayer.Concrete
         {
             return _writerDal.Get(x => x.WriterId == id);
         }
-
         public List<Writer> GetWriters()
         {
             return _writerDal.GetAll();

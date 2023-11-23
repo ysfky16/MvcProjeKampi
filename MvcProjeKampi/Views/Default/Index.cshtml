@@ -1,0 +1,72 @@
+﻿@using Entitiy.Concrete
+@model List<Entity.Concrete.Content>
+@using DataAccessLayer.Concrete
+@{
+    Context context = new Context();
+
+    var headings = context.Headings;
+}
+
+
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <br />
+        <section class="content">
+            <div class="container-fluid">
+
+                <!-- Timelime example  -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- The time line -->
+                        <div class="timeline">
+
+                            @if (Model.Count() > 0)
+                            {
+
+                                foreach (var content in Model)
+                                {
+                                    <!-- timeline time label -->
+                                    <div class="time-label">
+                                        <span class="bg-success">@(((DateTime)content.ContentDate).ToString("dd MMM yyyy"))</span>
+                                    </div>
+                                    <!-- /.timeline-label -->
+                                    <!-- timeline item -->
+                                    <div>
+                                        <i class="fas fa-comment bg-yellow"></i>
+                                        <div class="timeline-item">
+                                            <h3 class="timeline-header"><a href="#">@content.Writer.WriterName @content.Writer.WriterSurmame - @headings.FirstOrDefault(x => x.HeadingId == content.HeadingId).HeadingName </a></h3>
+                                            <div class="timeline-body">
+                                                @content.ContentText
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- END timeline item -->
+                                }
+
+
+
+                            }
+                            else
+                            {
+
+                                <div class="alert alert-warning" role="alert">
+                                    Bu başlığa henüz içerik girilmemiştir.
+                                </div>
+
+                            }
+
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </div>
+            <!-- /.timeline -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- ./wrapper -->
+</body>
+</html>

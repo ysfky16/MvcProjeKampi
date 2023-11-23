@@ -10,10 +10,9 @@ namespace BussinessLayer.Abstract
 {
     public interface ILoginService
     {
-        List<Admin> GetAdmin();
         void AdminAdd(Admin admin);
         void AdminRemove(Admin admin);
-        void CategoryUpdate(Admin admin);
+        void AdminUpdate(Admin admin);
         Admin GetById(int id);
 
     }

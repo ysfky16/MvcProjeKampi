@@ -10,14 +10,14 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace MvcProjeKampi.Controllers
-{
+{    
     public class AdminCategoryController : Controller
     {
         // GET: AdminCategory
 
         CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
 
-        
+        [Authorize(Roles = "A")]
         public ActionResult Index()
         {
             var categoryValues = _categoryManager.GetCategories().OrderBy(x=>x.CategoryName).ToList();
@@ -25,7 +25,6 @@ namespace MvcProjeKampi.Controllers
             return View(categoryValues);
 
         }
-
         public ActionResult AddCategory()
         {
             return View();
@@ -59,7 +58,7 @@ namespace MvcProjeKampi.Controllers
             _categoryManager.CategoryRemove(categoryValue);
             return RedirectToAction("Index");
 
-        }  
+        }
 
         public ActionResult EditCategory(int id)
         {

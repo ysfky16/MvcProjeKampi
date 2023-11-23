@@ -12,7 +12,8 @@ namespace BussinessLayer.ValidationRules
     {
         public HeadingValidator()
         {
-            RuleFor(x => x.HeadingName).NotEmpty().WithMessage("Başlık adı alanı boş geçilemez");
+            RuleFor(x => x.HeadingName).NotEmpty().WithMessage("Başlık adı alanı boş geçilemez").MinimumLength(3).WithMessage("Başlık adı en az 3 karakter olmalı")
+                .MaximumLength(30).WithMessage("Başlık adı en fazla 30 karakter olmalı");
             // kategori boş geçilemez hatası ver
             // yazar boş geçilemez hatası ver
         }

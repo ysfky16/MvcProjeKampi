@@ -28,24 +28,24 @@ namespace BussinessLayer.Concrete
             _messageDal.Insert(message);
         }
 
-        public List<Message> MessageListDeleteBox()
+        public List<Message> MessageListDeleteBox(string mail)
         {
-            return _messageDal.IfList(x => x.ReceiverMail == "admin@gmail.com" & x.IsDelete == true);
+            return _messageDal.IfList(x => x.ReceiverMail == mail & x.IsDelete == true);
         }
 
-        public List<Message> MessageListDraftBox()
+        public List<Message> MessageListDraftBox(string mail)
         {
-            return _messageDal.IfList(x => x.ReceiverMail == "admin@gmail.com" & x.IsDraft == true);
+            return _messageDal.IfList(x => x.ReceiverMail == mail & x.IsDraft == true);
         }
 
-        public List<Message> MessageListInbox()
+        public List<Message> MessageListInbox(string mail)
         {
-            return _messageDal.IfList(x => x.ReceiverMail == "admin@gmail.com" & x.IsDelete==false & x.IsDraft == false);
+            return _messageDal.IfList(x => x.ReceiverMail == mail & x.IsDelete==false & x.IsDraft == false);
         }
 
-        public List<Message> MessageListSendBox()
+        public List<Message> MessageListSendBox(string mail)
         {
-            return _messageDal.IfList(x => x.SenderMail == "admin@gmail.com" & x.IsDelete == false & x.IsDraft == false);
+            return _messageDal.IfList(x => x.SenderMail == mail & x.IsDelete == false & x.IsDraft == false);
         }
 
         public void MessageDeleted(Message message)

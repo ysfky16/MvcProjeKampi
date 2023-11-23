@@ -17,15 +17,19 @@ namespace MvcProjeKampi.Controllers
 
         MessageManager messageManager = new MessageManager(new EfMessageDal());
         MessageValidator messageValidator = new MessageValidator();
+
+        [Authorize(Roles ="A")]
         public ActionResult Inbox()
         {
-            var messageValues = messageManager.MessageListInbox();    
+            string mail = (string)Session["WriterMail"];
+            var messageValues = messageManager.MessageListInbox(mail);    
             return View(messageValues);
         }
 
         public ActionResult Sendbox()
         {
-            var messageValues = messageManager.MessageListSendBox();
+            string mail = (string)Session["WriterMail"];
+            var messageValues = messageManager.MessageListSendBox(mail);
             return View(messageValues);
         }
 
@@ -97,14 +101,16 @@ namespace MvcProjeKampi.Controllers
         }
         public ActionResult DraftBox()
         {
-            var messageValues = messageManager.MessageListDraftBox();
+            string mail = (string)Session["WriterMail"];
+            var messageValues = messageManager.MessageListDraftBox(mail);
             return View(messageValues);
         }
 
 
         public ActionResult DeletedBox()
         {
-            var messageValues = messageManager.MessageListDeleteBox();
+            string mail = (string)Session["WriterMail"];
+            var messageValues = messageManager.MessageListDeleteBox(mail);
             return View(messageValues);
         }
     }

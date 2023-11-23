@@ -32,9 +32,10 @@ namespace MvcProjeKampi.Controllers
 
         public PartialViewResult ContactSideBar()
         {
+            string mail = (string)Session["WriterMail"];
             var contactValues = contactManager.GetContacts();
-            var messageInboxValues = messageManager.MessageListInbox();
-            var messageSendboxValues = messageManager.MessageListSendBox();
+            var messageInboxValues = messageManager.MessageListInbox(mail);
+            var messageSendboxValues = messageManager.MessageListSendBox(mail);
             ViewBag.MailCount = contactValues.Count;
             ViewBag.InboxMailCount = messageInboxValues.Count;
             ViewBag.SendboxMailCount = messageSendboxValues.Count;

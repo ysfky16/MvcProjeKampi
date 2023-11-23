@@ -110,18 +110,40 @@ namespace MvcProjeKampi.Controllers
         [HttpPost]
         public ActionResult EditHeading(Heading heading)
         {
-            List<SelectListItem> categoryValues = (from x in categoryManager.GetCategories()
-                                                   select new SelectListItem
-                                                   {
-                                                       Text = x.CategoryName,
-                                                       Value = x.CategoryId.ToString(),
+            ValidationResult validationResults = headingValidator.Validate(heading);
 
-                                                   }).ToList();
-            ViewBag.CategoryValues = categoryValues;
 
-            manager.HeadingUpdate(heading);
 
-            return RedirectToAction("Index");
+            if (validationResults.IsValid)
+            {
+
+                manager.HeadingUpdate(heading);
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                foreach (var error in validationResults.Errors)
+                {
+                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                }
+
+                List<SelectListItem> categoryValues = (from x in categoryManager.GetCategories()
+                                                       select new SelectListItem
+                                                       {
+                                                           Text = x.CategoryName,
+                                                           Value = x.CategoryId.ToString(),
+
+                                                       }).ToList();
+
+                ViewBag.CategoryValues = categoryValues;
+
+            }
+
+
+
+
+            return View(heading);
 
         }
 

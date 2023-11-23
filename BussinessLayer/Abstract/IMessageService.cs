@@ -10,10 +10,10 @@ namespace BussinessLayer.Abstract
 {
     public interface IMessageService
     {
-        List<Message> MessageListInbox();
-        List<Message> MessageListSendBox();
-        List<Message> MessageListDraftBox();
-        List<Message> MessageListDeleteBox();
+        List<Message> MessageListInbox(string mail);
+        List<Message> MessageListSendBox(string mail);
+        List<Message> MessageListDraftBox(string mail);
+        List<Message> MessageListDeleteBox(string mail);
         void MessageAdd(Message message);
         void MessageDeleted(Message message);
         void MessageDraft(Message message);

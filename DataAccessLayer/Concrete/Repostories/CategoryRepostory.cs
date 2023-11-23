@@ -46,5 +46,15 @@ namespace DataAccessLayer.Concrete.Repostories
         {
             throw new NotImplementedException();
         }
+
+        public Category GetAdmin(Category T)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Category GetWriter(Category T)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
