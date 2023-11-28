@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "SweetAlert";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<button class="btn btn-primary" id="btn1">Button1</button>
+<button class="btn btn-success" id="btn2">Button1</button>
+<script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+
+<script>
+    $("#btn1").click(function () {
+        swal("Hello world!");
+    });
+    $("#btn2").click(function () {
+        swal("Tebrikler!", "You clicked the button!", "error");
+    });
+
+    
+</script>

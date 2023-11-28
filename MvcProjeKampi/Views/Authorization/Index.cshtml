@@ -1,0 +1,44 @@
+﻿@model List<Entitiy.Concrete.Admin>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    int siraNo = 0;
+}
+
+<br />
+<h2>Admin Liste</h2>
+
+
+    <table class="table table-bordered table-info">
+        <thead>
+            <tr>
+                <th>Sıra</th>
+                <th>Kullanıcı Adı</th>
+                <th>Yetki</th>
+                <th>Durum</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                siraNo++;
+            <tr>
+                <td>@siraNo</td>
+                <td>@item.AdminUserName</td>
+                <td>@item.AdminRole</td>
+                <td>Aktif</td>
+                <td>
+                <a href="#" class="btn btn-danger">Pasif Yap</a>
+                <a href="/Authorization/UpdateAdmin/@item.AdminId" class="btn btn-warning">Yetkisini Değiştir</a>
+                </td>
+            </tr>
+        }
+
+        </tbody>
+    </table>
+
+<a href="/Authorization/AddAdmin/" class="btn btn-primary"> Yeni Kullanıcı Tanımla</a>
+
+

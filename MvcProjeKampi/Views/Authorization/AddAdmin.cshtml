@@ -1,0 +1,29 @@
+﻿@model Entitiy.Concrete.Admin
+@{
+    ViewBag.Title = "AddAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Yeni Admin Ekleme Sayfası</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken();
+
+<div class="form-group col-md-8">
+
+    @Html.Label("Kullanıcı Adı", new { @class = "form-label" })
+    @Html.TextBoxFor(x => x.AdminUserName, new { @class = "form-control" })
+    @Html.Label("Şifre", new { @class = "form-label" })
+    @Html.TextBoxFor(x => x.AdminPassword, new { @class = "form-control" })
+    @Html.Label("Rol", new { @class = "form-label" })
+    @Html.DropDownListFor(x=>x.AdminRole, (List<SelectListItem>)ViewBag.Roles, "Rol Seçiniz", new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary" type="submit">Ekle</button>
+</div>
+
+
+}
+

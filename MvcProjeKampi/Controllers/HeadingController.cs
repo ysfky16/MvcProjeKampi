@@ -26,6 +26,13 @@ namespace MvcProjeKampi.Controllers
             return View(headingValues);
         }
 
+        public ActionResult HeadingReports()
+        {
+            var headingValues = manager.GetList();
+            return View(headingValues);
+
+        }
+
         public ActionResult AddHeading()
         {
             List<SelectListItem> categoryValues = (from x in categoryManager.GetCategories()
@@ -37,12 +44,12 @@ namespace MvcProjeKampi.Controllers
                                                    }).ToList();
 
             List<SelectListItem> writerValues = (from x in writerManager.GetWriters()
-                                                   select new SelectListItem
-                                                   {
-                                                       Text = x.WriterName +" " + x.WriterSurmame,
-                                                       Value = x.WriterId.ToString(),
+                                                 select new SelectListItem
+                                                 {
+                                                     Text = x.WriterName + " " + x.WriterSurmame,
+                                                     Value = x.WriterId.ToString(),
 
-                                                   }).ToList();
+                                                 }).ToList();
 
             ViewBag.CategoryValues = categoryValues;
             ViewBag.WriterValues = writerValues;
@@ -90,7 +97,7 @@ namespace MvcProjeKampi.Controllers
             return View(heading);
         }
 
-        public ActionResult EditHeading(int id) 
+        public ActionResult EditHeading(int id)
         {
             List<SelectListItem> categoryValues = (from x in categoryManager.GetCategories()
                                                    select new SelectListItem
@@ -102,9 +109,9 @@ namespace MvcProjeKampi.Controllers
             ViewBag.CategoryValues = categoryValues;
 
             var headingValue = manager.GetById(id);
-        
+
             return View(headingValue);
-        
+
         }
 
         [HttpPost]

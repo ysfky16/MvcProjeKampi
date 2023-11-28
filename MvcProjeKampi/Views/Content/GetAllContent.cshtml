@@ -1,0 +1,17 @@
+﻿@model List<Entity.Concrete.Content>
+@{
+    ViewBag.Title = "GetAllContent";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <p>Aranacak Kelime</p> @Html.TextBox("parametre")
+    <input type="submit" value="Ara" />
+}
+
+@foreach (var item in Model)
+{
+    <p>@item.ContentText</p>
+}
+
